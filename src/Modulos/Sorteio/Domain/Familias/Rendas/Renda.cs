@@ -6,7 +6,7 @@ namespace Sorteio.Domain.Familias.Rendas
     {
         public Dinheiro Valor { get; }
 
-        public Renda(decimal valor)
+        private Renda(decimal valor)
         {
             if (valor <= 0)
             {
@@ -21,5 +21,9 @@ namespace Sorteio.Domain.Familias.Rendas
             return this.Valor.Somar(valor);
         }
 
+        public static Renda CriarNovo(decimal valor)
+        {
+            return new Renda(valor);
+        }
     }
 }

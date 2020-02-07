@@ -7,11 +7,16 @@ namespace Sorteio.Domain.Familias.Pessoas
     {
         public DateTime DataDeNascimento { get; }
 
-        public Idade(DateTime dataDeNascimento)
+        private Idade(DateTime dataDeNascimento)
         {
-            if(dataDeNascimento == DateTime.MinValue)
+            if (dataDeNascimento == DateTime.MinValue)
             {
                 throw new DataDeNascimentoNaoPodeTerValorMinimoException("Data de nascimento deve possuir valor diferente de mínimo!");
+            }
+
+            if (dataDeNascimento > DateTime.Today)
+            {
+                throw new DataDeNascimentoNaoPodeSerNoFuturo("Data de nascimento não pode ser no futuro.");
             }
 
             DataDeNascimento = dataDeNascimento;
@@ -19,7 +24,15 @@ namespace Sorteio.Domain.Familias.Pessoas
 
         public int Obter()
         {
-            return 0;
+            var idadeAtual = DateTime.Now.Year - DataDeNascimento.Year;
+
+            if (DataDeNascimento.Date.Month > DateTime.Now.Date.Month)
+                idadeAtual--;
+            else if (DataDeNascimento.Date.Month >= DateTime.Now.Date.Month &&
+                     DataDeNascimento.Date.Day > DateTime.Now.Date.Day)
+                idadeAtual--;
+
+            return idadeAtual;
         }
 
         public static Idade CriarNovo(DateTime dataDeNascimento)

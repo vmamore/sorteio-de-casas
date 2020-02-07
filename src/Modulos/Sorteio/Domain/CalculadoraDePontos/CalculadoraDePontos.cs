@@ -4,7 +4,7 @@ namespace Sorteio.Domain.CalculadoraDePontos
 {
     public sealed class CalculadoraDePontos
     {
-        public Familia Familia { get; }
+        private Familia Familia { get; }
 
         public CalculadoraDePontos(Familia familia)
         {
@@ -13,11 +13,13 @@ namespace Sorteio.Domain.CalculadoraDePontos
 
         public int ObterTotal()
         {
-            var calc1 = new CalculadoraDePontosApartirDosDependentes(Familia).Calcular();
-            var calc2 = new CalculadoraDePontosApartirDaRendaDaFamilia(Familia).Calcular();
-            var calc3 = new CalculadoraDePontosApartirDosDependentes(Familia).Calcular();
+            var pontuacaoPelaQuantidadeDeDependentesNaFamilia = new CalculadoraDePontosApartirDaQuantidadeDeDependentes(Familia).Calcular();
+            var pontuacaoAPartirDaRendaTotalDaFamilia = new CalculadoraDePontosApartirDaRendaDaFamilia(Familia).Calcular();
+            var pontuacaoPelaQuantidadeDeDependentesDaFamilia = new CalculadoraDePontosApartirDaQuantidadeDeDependentes(Familia).Calcular();
 
-            return calc1 + calc2 + calc3;
+            return pontuacaoPelaQuantidadeDeDependentesNaFamilia + 
+                   pontuacaoAPartirDaRendaTotalDaFamilia + 
+                   pontuacaoPelaQuantidadeDeDependentesDaFamilia;
         }
     }
 }

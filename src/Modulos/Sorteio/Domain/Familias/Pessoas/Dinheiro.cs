@@ -1,6 +1,6 @@
 ﻿using Core.Domain;
 
-namespace Sorteio.Domain.Familias.Rendas
+namespace Sorteio.Domain.Familias.Pessoas
 {
     public sealed class Dinheiro : ObjetoDeValor
     {

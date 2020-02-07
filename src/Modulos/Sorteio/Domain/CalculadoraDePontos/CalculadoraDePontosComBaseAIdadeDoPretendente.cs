@@ -1,27 +1,21 @@
-﻿using Sorteio.Domain.Familias;
+﻿using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Familias;
+using System.Collections.ObjectModel;
 
 namespace Sorteio.Domain.CalculadoraDePontos
 {
-    public class CalculadoraDePontosComBaseAIdadeDoPretendente
+    public class CalculadoraDePontosComBaseAIdadeDoPretendente : CalculadoraDePontosBase
     {
-        public Familia Familia { get; }
-
         public CalculadoraDePontosComBaseAIdadeDoPretendente(Familia familia)
         {
-            this.Familia = familia;
-        }
+            var idadeDoPretendente = familia.ObterPretendente().Idade.Obter();
 
-        public int Calcular()
-        {
-            var pretendenteDaFamilia = Familia.ObterPretendente();
-
-            var idadeDoPretendente = pretendenteDaFamilia.Idade.Obter();
-
-            if (idadeDoPretendente >= 45) return 3;
-
-            if (idadeDoPretendente >= 30 && idadeDoPretendente < 45) return 2;
-
-            return 1;
+            Criterios = new Collection<ICriterioBase>()
+            {
+                new CriterioDaIdadeDoPretendenteIgualOuAcimaDe45Anos(idadeDoPretendente),
+                new CriterioDaIdadeDoPretendenteDe30A44Anos(idadeDoPretendente),
+                new CriterioDaIdadeDoPretendenteAbaixoDos30Anos(idadeDoPretendente)
+            };
         }
     }
 }

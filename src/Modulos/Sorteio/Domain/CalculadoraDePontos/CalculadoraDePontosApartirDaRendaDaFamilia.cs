@@ -1,25 +1,21 @@
-﻿using Sorteio.Domain.Familias;
+﻿using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Familias;
+using System.Collections.ObjectModel;
 
 namespace Sorteio.Domain.CalculadoraDePontos
 {
-    public sealed class CalculadoraDePontosApartirDaRendaDaFamilia
+    public sealed class CalculadoraDePontosApartirDaRendaDaFamilia : CalculadoraDePontosBase
     {
-        public Familia Familia { get; }
-
         public CalculadoraDePontosApartirDaRendaDaFamilia(Familia familia)
         {
-            this.Familia = familia;
-        }
+            var rendaTotalDaFamilia = familia.ObterRendaTotal();
 
-        public int Calcular()
-        {
-            var valorDaRendaDaFamilia = Familia.ObterRendaTotal();
-
-            if (valorDaRendaDaFamilia <= 900) return 5;
-            if (valorDaRendaDaFamilia <= 1500) return 3;
-            if (valorDaRendaDaFamilia <= 200) return 1;
-
-            return 0;
+            Criterios = new Collection<ICriterioBase>()
+            {
+                new CriterioDaRendaTotalDaFamiliaAte900Reais(rendaTotalDaFamilia),
+                new CriterioDaRendaTotalDaFamiliaDe901Ate1500Reais(rendaTotalDaFamilia),
+                new CriterioDaRendaTotalDaFamiliaDe15001Ate200Reais(rendaTotalDaFamilia)
+            };
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Core.Domain;
-using Sorteio.Domain.Familias.Rendas;
-using System;
 
 namespace Sorteio.Domain.Familias.Pessoas
 {
@@ -12,10 +10,12 @@ namespace Sorteio.Domain.Familias.Pessoas
         public Renda Renda { get;  }
         public Tipo Tipo { get; }
 
-        public Pessoa(string nome, DateTime dataDeNascimento)
+        public Pessoa(Nome nome, Idade idade, Renda renda, Tipo tipo)
         {
-            Nome = Nome.CriarNovo(nome);
-            Idade = Idade.CriarNovo(dataDeNascimento);
+            Nome = nome;
+            Idade = idade;
+            Renda = renda;
+            Tipo = tipo;
         }
 
         public bool EhPretendente()

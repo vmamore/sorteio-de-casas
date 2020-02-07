@@ -9,9 +9,18 @@ namespace Sorteio.Domain.Familias
         public Status Status { get; }
         public PessoasCollection Pessoas { get; }
 
-        public Familia()
+        public Familia(Status status)
         {
             Id = new FamiliaId(Guid.NewGuid());
+            Status = status;
+            Pessoas = new PessoasCollection();
+        }
+
+        public Pessoa CriarPessoa(IFamiliaFactory factory, Nome nome, Idade idade, Renda renda, Tipo tipo)
+        {
+            var pessoa = factory.CriarPessoa(this, nome, idade, renda, tipo);
+            this.Pessoas.Add(pessoa);
+            return pessoa;
         }
 
         public decimal ObterRendaTotal()
@@ -24,14 +33,9 @@ namespace Sorteio.Domain.Familias
             return this.Pessoas.ObterPretendente();
         }
         
-        public bool Possui3OuMaisDependentes()
+        public int ObterQuantidadeDeDependentes()
         {
-            return this.Pessoas.Possui3OuMaisDependentes();
-        }
-
-        public bool Possui1Ou2Dependentes()
-        {
-            return this.Pessoas.Possui1Ou2Dependentes();
+            return this.Pessoas.ObterQuantidadeDeDependentes();
         }
     }
 }

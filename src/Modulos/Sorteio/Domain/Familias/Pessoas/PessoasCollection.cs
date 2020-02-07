@@ -1,4 +1,5 @@
 ﻿using Sorteio.Domain.Familias.Rendas;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Sorteio.Domain.Familias.Pessoas
 
         public void Add(Pessoa pessoa) => this._pessoas.Add(pessoa);
 
-        public IReadOnlyCollection<Pessoa> ObterPessoas()
+        public IReadOnlyCollection<Pessoa> Obter()
         {
             var pessoas = new ReadOnlyCollection<Pessoa>(this._pessoas);
             return pessoas;
@@ -40,21 +41,10 @@ namespace Sorteio.Domain.Familias.Pessoas
                 pessoa => pessoa.EhPretendente());
         }
 
-        public bool Possui3OuMaisDependentes()
+        public int ObterQuantidadeDeDependentes()
         {
-            return _pessoas.Count(pessoa =>
-            pessoa.EhDependente() &&
-           !pessoa.EhMaiorDeIdade()) >= 3;
-        }
-
-        public bool Possui1Ou2Dependentes()
-        {
-            var quantidadeDeDependentes = _pessoas.Count(pessoa =>
-            pessoa.EhDependente() &&
-            !pessoa.EhMaiorDeIdade());
-
-            return quantidadeDeDependentes == 1 ||
-                   quantidadeDeDependentes == 2;
+            return _pessoas.Count(pessoa => pessoa.EhDependente() &&
+                                           !pessoa.EhMaiorDeIdade());
         }
     }
 }

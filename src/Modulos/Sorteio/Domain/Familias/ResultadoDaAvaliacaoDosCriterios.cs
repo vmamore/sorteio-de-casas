@@ -1,5 +1,6 @@
 ﻿using Core.Domain;
 using Sorteio.Domain.CalculadoraDePontos;
+using Sorteio.Domain.Criterios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,12 @@ namespace Sorteio.Domain.Familias
 
         public ResultadoDaAvaliacaoDosCriterios(
             FamiliaId familiaId,
-            Pontuacao pontos,
-            IEnumerable<string> criteriosAtendidos)
+            IEnumerable<ICriterioBase> criteriosAtendidos)
         {
             FamiliaId = familiaId;
-            PontuacaoTotal = pontos;
             DataDeSelecao = DateTime.UtcNow;
             CriteriosAtendidos = new CriteriosAtendidosCollection(criteriosAtendidos);
+            PontuacaoTotal = CriteriosAtendidos.PontuacaoTotal;
         }
 
         public class CriteriosAtendidosCollection : ObjetoDeValor
@@ -33,11 +33,14 @@ namespace Sorteio.Domain.Familias
                     return CriteriosAtendidos.Count();
                 }
             }
+            public Pontuacao PontuacaoTotal { get; }
             public IEnumerable<string> CriteriosAtendidos { get; set; }
 
-            public CriteriosAtendidosCollection(IEnumerable<string> criteriosAtendidos)
+            public CriteriosAtendidosCollection(IEnumerable<ICriterioBase> criteriosAtendidos)
             {
-                CriteriosAtendidos = CriteriosAtendidos;
+                CriteriosAtendidos = criteriosAtendidos.Select(criterio => criterio.ObterNome());
+                PontuacaoTotal = criteriosAtendidos.Select(criterio => criterio.Pontuacao)
+                    .Aggregate((pontuacaoTotal, pontuacaoAtual) => pontuacaoTotal + pontuacaoAtual);
             }
         }
     }

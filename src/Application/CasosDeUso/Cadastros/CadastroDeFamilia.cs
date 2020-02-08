@@ -1,13 +1,13 @@
 ﻿using Application.CasosDeUso.Cadastros.Dtos;
 using Core.Domain;
-using Sorteio.Domain.Familias;
+using Sorteio.Domain.Familias.Interfaces;
 using Sorteio.Domain.Familias.Pessoas;
 using Sorteio.Domain.Familias.Validacoes;
 using System.Threading.Tasks;
 
 namespace Application.CasosDeUso.Cadastros
 {
-    public class CadastroDeFamilia : ICadastroDeFamilia
+    public class CadastroDeFamilia
     {
         private readonly IFamiliaRepository _familiaRepository;
         private readonly IFamiliaFactory _familiaFactory;
@@ -29,11 +29,10 @@ namespace Application.CasosDeUso.Cadastros
             foreach (var pessoa in familiaDto.Pessoas)
             {
                 familia.CriarPessoa(
-                    _familiaFactory,
                     Nome.CriarNovo(pessoa.Nome),
                     Idade.CriarNovo(pessoa.DataDeNascimento),
-                    Renda.CriarNovo(pessoa.Renda),
-                    pessoa.Tipo);
+                    pessoa.Tipo,
+                    Renda.CriarNovo(pessoa.Renda));
             }
 
             var familiaPossuiUmUnicoPretendenteEUmUnicoConjuge = new FamiliaDevePossuirUmPretendenteEUmConjuge(familia);

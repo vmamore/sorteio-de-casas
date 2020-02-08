@@ -21,7 +21,7 @@ namespace TestesDeUnidade.CriteriosTests.DependentesTests
 
             var criterioDaFamiliaCom1Ou2Dependentes = new CriterioDaFamiliaCom1Ou2Dependentes(quantidadeDeDependentes);
 
-            Assert.Equal(0, criterioDaFamiliaCom1Ou2Dependentes.Pontuacao.Valor);
+            Assert.False(criterioDaFamiliaCom1Ou2Dependentes.EhAtendido());
         }
 
         [Fact]
@@ -33,6 +33,7 @@ namespace TestesDeUnidade.CriteriosTests.DependentesTests
 
             var criterioDaFamiliaCom1Ou2Dependentes = new CriterioDaFamiliaCom1Ou2Dependentes(quantidadeDeDependentes);
 
+            Assert.True(criterioDaFamiliaCom1Ou2Dependentes.EhAtendido());
             Assert.Equal(2, criterioDaFamiliaCom1Ou2Dependentes.Pontuacao.Valor);
         }
     }

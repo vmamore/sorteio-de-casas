@@ -1,4 +1,5 @@
-﻿using Sorteio.Domain.Familias.Pessoas;
+﻿using Sorteio.Domain.Familias.Interfaces;
+using Sorteio.Domain.Familias.Pessoas;
 using System;
 
 namespace Sorteio.Domain.Familias
@@ -16,23 +17,23 @@ namespace Sorteio.Domain.Familias
             Pessoas = new PessoasCollection();
         }
 
-        public Pessoa CriarPessoa(IFamiliaFactory factory, Nome nome, Idade idade, Renda renda, Tipo tipo)
+        public Pessoa CriarPessoa(Nome nome, Idade idade, Tipo tipo, Renda renda)
         {
-            var pessoa = factory.CriarPessoa(this, nome, idade, renda, tipo);
+            var pessoa = new Pessoa(this.Id, nome, idade, tipo, renda);
             this.Pessoas.Add(pessoa);
             return pessoa;
         }
 
-        public decimal ObterRendaTotal()
+        public Dinheiro ObterRendaTotal()
         {
-            return this.Pessoas.ObterValorTotalDaRenda().ToDecimal();
+            return this.Pessoas.ObterValorTotalDaRenda();
         }
 
         public Pessoa ObterPretendente()
         {
             return this.Pessoas.ObterPretendente();
         }
-        
+
         public int ObterQuantidadeDeDependentes()
         {
             return this.Pessoas.ObterQuantidadeDeDependentes();

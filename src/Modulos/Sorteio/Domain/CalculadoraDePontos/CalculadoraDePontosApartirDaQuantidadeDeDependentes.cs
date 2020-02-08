@@ -1,10 +1,11 @@
 ﻿using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Criterios.Dependentes;
 using Sorteio.Domain.Familias;
 using System.Collections.ObjectModel;
 
 namespace Sorteio.Domain.CalculadoraDePontos
 {
-    public class CalculadoraDePontosApartirDaQuantidadeDeDependentes : CalculadoraDePontosBase
+    public sealed class CalculadoraDePontosApartirDaQuantidadeDeDependentes : CalculadoraDePontosBase
     {
         public CalculadoraDePontosApartirDaQuantidadeDeDependentes(Familia familia)
         {

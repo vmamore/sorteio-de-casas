@@ -96,3 +96,7 @@ D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\obj\Debug\netcoreap
 D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\obj\Debug\netcoreapp3.0\TestesDeUnidade.csproj.CopyComplete
 D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\obj\Debug\netcoreapp3.0\TestesDeUnidade.dll
 D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\obj\Debug\netcoreapp3.0\TestesDeUnidade.pdb
+D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\bin\Debug\netcoreapp3.0\InMemoryDataAccess.dll
+D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\bin\Debug\netcoreapp3.0\Setup.dll
+D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\bin\Debug\netcoreapp3.0\Setup.pdb
+D:\Labs\.NET Core\Projetos\teste-digix\tests\TestesDeUnidade\bin\Debug\netcoreapp3.0\InMemoryDataAccess.pdb

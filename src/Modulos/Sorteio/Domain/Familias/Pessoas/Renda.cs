@@ -8,9 +8,9 @@ namespace Sorteio.Domain.Familias.Pessoas
 
         private Renda(decimal valor)
         {
-            if (valor <= 0)
+            if (valor < 0)
             {
-                throw new RendaDevePossuirValorPositivoMaiorQueZeroException("Valor da renda não pode ser menor ou igual a zero!");
+                throw new RendaNaoDevePossuirValorNegativoException("Valor da renda não pode ser menor ou igual a zero!");
             }
 
             Valor = Dinheiro.CriarNovo(valor);

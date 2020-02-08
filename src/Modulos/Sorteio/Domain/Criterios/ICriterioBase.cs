@@ -1,8 +1,11 @@
-﻿namespace Sorteio.Domain.Criterios
+﻿using Sorteio.Domain.CalculadoraDePontos;
+
+namespace Sorteio.Domain.Criterios
 {
     public interface ICriterioBase
     {
-        int Pontuacao { get; }
+        Pontuacao Pontuacao { get; }
         bool EhAtendido();
+        string ObterNome();
     }
 }

@@ -5,18 +5,17 @@ namespace Sorteio.Domain.CalculadoraDePontos
 {
     public abstract class CalculadoraDePontosBase
     {
-        private int ZeroPontos = 0;
         protected ICollection<ICriterioBase> Criterios { get; set; }
 
-        public int Calcular()
+        public (Pontuacao pontuacao, string nomeDoCriterio) Calcular()
         {
             foreach (var criteiro in Criterios)
             {
-                if (criteiro.EhAtendido())
-                    return criteiro.Pontuacao;
+                if(criteiro.EhAtendido())
+                    return (criteiro.Pontuacao, criteiro.ObterNome());
             }
 
-            return ZeroPontos;
+            return (Pontuacao.Zero(), string.Empty);
         }
     }
 }

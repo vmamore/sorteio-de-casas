@@ -1973,6 +1973,33 @@
           "bin/placeholder/Core.Domain.dll": {}
         }
       },
+      "InMemoryDataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "Sorteio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/InMemoryDataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/InMemoryDataAccess.dll": {}
+        }
+      },
+      "Setup/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "InMemoryDataAccess": "1.0.0",
+          "Sorteio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Setup.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Setup.dll": {}
+        }
+      },
       "Sorteio/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
@@ -6546,6 +6573,16 @@
       "path": "../../src/Core.Domain/Core.Domain.csproj",
       "msbuildProject": "../../src/Core.Domain/Core.Domain.csproj"
     },
+    "InMemoryDataAccess/1.0.0": {
+      "type": "project",
+      "path": "../../src/InMemoryDataAccess/InMemoryDataAccess.csproj",
+      "msbuildProject": "../../src/InMemoryDataAccess/InMemoryDataAccess.csproj"
+    },
+    "Setup/1.0.0": {
+      "type": "project",
+      "path": "../Setup/Setup.csproj",
+      "msbuildProject": "../Setup/Setup.csproj"
+    },
     "Sorteio/1.0.0": {
       "type": "project",
       "path": "../../src/Modulos/Sorteio/Sorteio.csproj",
@@ -6555,6 +6592,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.0": [
       "Microsoft.NET.Test.Sdk >= 16.2.0",
+      "Setup >= 1.0.0",
       "Sorteio >= 1.0.0",
       "coverlet.collector >= 1.0.1",
       "xunit >= 2.4.0",
@@ -6593,6 +6631,9 @@
           "projectReferences": {
             "D:\\Labs\\.NET Core\\Projetos\\teste-digix\\src\\Modulos\\Sorteio\\Sorteio.csproj": {
               "projectPath": "D:\\Labs\\.NET Core\\Projetos\\teste-digix\\src\\Modulos\\Sorteio\\Sorteio.csproj"
+            },
+            "D:\\Labs\\.NET Core\\Projetos\\teste-digix\\tests\\Setup\\Setup.csproj": {
+              "projectPath": "D:\\Labs\\.NET Core\\Projetos\\teste-digix\\tests\\Setup\\Setup.csproj"
             }
           }
         }

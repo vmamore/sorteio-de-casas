@@ -1,6 +1,4 @@
-﻿using Sorteio.Domain.Familias.Rendas;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 

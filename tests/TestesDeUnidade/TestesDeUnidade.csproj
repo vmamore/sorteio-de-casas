@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Modulos\Sorteio\Sorteio.csproj" />
+    <ProjectReference Include="..\Setup\Setup.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Sorteio.Domain.CalculadoraDePontos;
+using Sorteio.Domain.Familias.Pessoas;
+using System;
 
 namespace Sorteio.Domain.Criterios.IdadeDoPretendente
 {
     public abstract class CriterioDaIdadeDoPretendente : ICriterioBase
     {
-        public abstract int Pontuacao { get; }
-        protected int Idade { get; }
-        protected Func<int, bool> Condicao { get; }
+        public abstract Pontuacao Pontuacao { get; }
+        protected Idade Idade { get; }
+        protected Func<Idade, bool> Condicao { get; }
 
-        protected CriterioDaIdadeDoPretendente(int idade, Func<int, bool> condicao)
+        protected CriterioDaIdadeDoPretendente(Idade idade, Func<Idade, bool> condicao)
         {
             Idade = idade;
             Condicao = condicao;
@@ -16,6 +18,10 @@ namespace Sorteio.Domain.Criterios.IdadeDoPretendente
         public bool EhAtendido()
         {
             return Condicao.Invoke(Idade);
+        }
+        public string ObterNome()
+        {
+            return this.GetType().Name;
         }
     }
 }

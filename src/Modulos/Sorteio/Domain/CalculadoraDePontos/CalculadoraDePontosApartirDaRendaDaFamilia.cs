@@ -1,4 +1,5 @@
 ﻿using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Criterios.RendaTotalDaFamilia;
 using Sorteio.Domain.Familias;
 using System.Collections.ObjectModel;
 

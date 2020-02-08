@@ -1,21 +1,28 @@
-﻿using System;
+﻿using Sorteio.Domain.CalculadoraDePontos;
+using Sorteio.Domain.Familias.Pessoas;
+using System;
 
 namespace Sorteio.Domain.Criterios.RendaTotalDaFamilia
 {
     public abstract class CriterioDaRendaTotalDaFamilia : ICriterioBase
     {
-        public abstract int Pontuacao { get; }
-        protected decimal Renda { get; }
-        protected Func<decimal, bool> Condicao { get; }
+        public abstract Pontuacao Pontuacao { get; }
+        protected Dinheiro Dinheiro { get; }
+        protected Func<Dinheiro, bool> Condicao { get; }
 
-        protected CriterioDaRendaTotalDaFamilia(decimal renda, Func<decimal, bool> condicao)
+        protected CriterioDaRendaTotalDaFamilia(Dinheiro renda, Func<Dinheiro, bool> condicao)
         {
-            Renda = renda;
+            Dinheiro = renda;
             Condicao = condicao;
         }
         public bool EhAtendido()
         {
-            return Condicao.Invoke(Renda);
+            return Condicao.Invoke(Dinheiro);
+        }
+
+        public string ObterNome()
+        {
+            return this.GetType().Name;
         }
     }
 }

@@ -9,6 +9,7 @@
       "TestesDeUnidade/1.0.0": {
         "dependencies": {
           "Microsoft.NET.Test.Sdk": "16.2.0",
+          "Setup": "1.0.0",
           "Sorteio": "1.0.0",
           "coverlet.collector": "1.0.1",
           "xunit": "2.4.0",
@@ -1348,6 +1349,23 @@
           "Core.Domain.dll": {}
         }
       },
+      "InMemoryDataAccess/1.0.0": {
+        "dependencies": {
+          "Sorteio": "1.0.0"
+        },
+        "runtime": {
+          "InMemoryDataAccess.dll": {}
+        }
+      },
+      "Setup/1.0.0": {
+        "dependencies": {
+          "InMemoryDataAccess": "1.0.0",
+          "Sorteio": "1.0.0"
+        },
+        "runtime": {
+          "Setup.dll": {}
+        }
+      },
       "Sorteio/1.0.0": {
         "dependencies": {
           "Core.Domain": "1.0.0"
@@ -2058,6 +2076,16 @@
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
     "Core.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InMemoryDataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Setup/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

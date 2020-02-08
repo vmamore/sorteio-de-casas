@@ -1,4 +1,5 @@
 ﻿using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Criterios.IdadeDoPretendente;
 using Sorteio.Domain.Familias;
 using System.Collections.ObjectModel;
 
@@ -8,7 +9,7 @@ namespace Sorteio.Domain.CalculadoraDePontos
     {
         public CalculadoraDePontosComBaseAIdadeDoPretendente(Familia familia)
         {
-            var idadeDoPretendente = familia.ObterPretendente().Idade.Obter();
+            var idadeDoPretendente = familia.ObterPretendente().Idade;
 
             Criterios = new Collection<ICriterioBase>()
             {

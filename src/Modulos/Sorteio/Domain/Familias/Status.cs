@@ -8,10 +8,11 @@ namespace Sorteio.Domain.Familias
         public string Descricao { get; set; }
         public bool CadastroValido { get; }
 
-        public Status(int id, string descricao)
+        public Status(int id, string descricao, bool cadastroValido)
         {
             Id = id;
             Descricao = descricao;
+            CadastroValido = cadastroValido;
         }
     }
 }

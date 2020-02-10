@@ -49,5 +49,10 @@ namespace Sorteio.Domain.CalculadoraDePontos
         {
             return new Pontuacao(p1.Valor + p2.Valor);
         }
+
+        public static Pontuacao CriarNovo(int valor)
+        {
+            return new Pontuacao(valor);
+        }
     }
 }

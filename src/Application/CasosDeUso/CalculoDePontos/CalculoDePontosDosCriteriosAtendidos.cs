@@ -1,10 +1,9 @@
-﻿using Sorteio.Domain.CalculadoraDePontos;
-using Sorteio.Domain.CalculadoraDePontos.Interfaces;
-using Sorteio.Domain.Familias;
+﻿using Sorteio.Domain.CalculadoraDePontos.Interfaces;
+using Sorteio.Domain.Criterios;
+using Sorteio.Domain.Criterios.Interfaces;
 using Sorteio.Domain.Familias.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Application.CasosDeUso.ValidacaoDosCriterios
@@ -13,14 +12,18 @@ namespace Application.CasosDeUso.ValidacaoDosCriterios
     {
         private readonly IFamiliaRepository _familiaRepository;
         private readonly IAvaliacaoDeCriterios _avaliacaoDeCriterios;
+        private readonly IResultadoDaAvaliacaoDosCriteriosRepositorio _resultadoDaAvaliacaoDosCriteriosRepositorio;
+
         private ICollection<ResultadoDaAvaliacaoDosCriterios> _resultadoDaAvaliacaoDosCriterios;
 
         public CalculoDePontosDosCriteriosAtendidos(
             IFamiliaRepository familiaRepository,
-            IAvaliacaoDeCriterios avaliacaoDeCriterios)
+            IAvaliacaoDeCriterios avaliacaoDeCriterios,
+            IResultadoDaAvaliacaoDosCriteriosRepositorio resultadoDaAvaliacaoDosCriteriosRepositorio)
         {
             _familiaRepository = familiaRepository;
             _avaliacaoDeCriterios = avaliacaoDeCriterios;
+            _resultadoDaAvaliacaoDosCriteriosRepositorio = resultadoDaAvaliacaoDosCriteriosRepositorio;
             _resultadoDaAvaliacaoDosCriterios = new Collection<ResultadoDaAvaliacaoDosCriterios>();
         }
 
@@ -39,7 +42,7 @@ namespace Application.CasosDeUso.ValidacaoDosCriterios
                 _resultadoDaAvaliacaoDosCriterios.Add(resultadoDaAvaliacaoDosCriterios);
             }
 
-
+            await _resultadoDaAvaliacaoDosCriteriosRepositorio.Salvar(_resultadoDaAvaliacaoDosCriterios);
         }
     }
 }

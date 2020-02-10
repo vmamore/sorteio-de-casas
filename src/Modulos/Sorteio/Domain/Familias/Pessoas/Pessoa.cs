@@ -9,8 +9,10 @@ namespace Sorteio.Domain.Familias.Pessoas
         public PessoaId Id { get; }
         public Nome Nome { get; }
         public Idade Idade { get; }
-        public Renda Renda { get;  }
+        public Renda Renda { get; }
         public Tipo Tipo { get; }
+
+        public Familia Familia { get; }
 
         public Pessoa(FamiliaId familiaId, Nome nome, Idade idade, Tipo tipo, Renda renda = null)
         {

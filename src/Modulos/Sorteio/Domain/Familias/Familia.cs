@@ -1,6 +1,7 @@
-﻿using Sorteio.Domain.Familias.Interfaces;
-using Sorteio.Domain.Familias.Pessoas;
+﻿using Sorteio.Domain.Familias.Pessoas;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Sorteio.Domain.Familias
 {
@@ -8,13 +9,14 @@ namespace Sorteio.Domain.Familias
     {
         public FamiliaId Id { get; }
         public Status Status { get; }
-        public PessoasCollection Pessoas { get; }
+        public IList<Pessoa> Pessoas { get; }
 
+        protected Familia() {}
         public Familia(Status status)
         {
             Id = new FamiliaId(Guid.NewGuid());
             Status = status;
-            Pessoas = new PessoasCollection();
+            Pessoas = new List<Pessoa>();
         }
 
         public Pessoa CriarPessoa(Nome nome, Idade idade, Tipo tipo, Renda renda)
@@ -26,17 +28,26 @@ namespace Sorteio.Domain.Familias
 
         public Dinheiro ObterRendaTotal()
         {
-            return this.Pessoas.ObterValorTotalDaRenda();
+            var dinheiroTotal = Dinheiro.CriarNovo(0);
+
+            foreach (var pessoa in Pessoas)
+            {
+                dinheiroTotal = pessoa.Renda.Somar(dinheiroTotal);
+            }
+
+            return dinheiroTotal;
         }
 
         public Pessoa ObterPretendente()
         {
-            return this.Pessoas.ObterPretendente();
+            return Pessoas.SingleOrDefault(
+                pessoa => pessoa.EhPretendente());
         }
 
         public int ObterQuantidadeDeDependentes()
         {
-            return this.Pessoas.ObterQuantidadeDeDependentes();
+            return Pessoas.Count(pessoa => pessoa.EhDependente() &&
+                                          !pessoa.EhMaiorDeIdade());
         }
     }
 }

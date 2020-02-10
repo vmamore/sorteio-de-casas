@@ -1,0 +1,8 @@
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\bin\Debug\netcoreapp3.0\Core.Domain.deps.json
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\bin\Debug\netcoreapp3.0\Core.Domain.dll
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\bin\Debug\netcoreapp3.0\Core.Domain.pdb
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\obj\Debug\netcoreapp3.0\Core.Domain.AssemblyInfoInputs.cache
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\obj\Debug\netcoreapp3.0\Core.Domain.AssemblyInfo.cs
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\obj\Debug\netcoreapp3.0\Core.Domain.dll
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\obj\Debug\netcoreapp3.0\Core.Domain.pdb
+D:\Labs\.NET Core\Projetos\teste-digix\src\Core.Domain\obj\Debug\netcoreapp3.0\Core.Domain.csprojAssemblyReference.cache

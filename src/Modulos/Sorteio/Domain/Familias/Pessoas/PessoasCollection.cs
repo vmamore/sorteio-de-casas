@@ -6,18 +6,18 @@ namespace Sorteio.Domain.Familias.Pessoas
 {
     public sealed class PessoasCollection
     {
-        private readonly IList<Pessoa> _pessoas;
+        public IList<Pessoa> Pessoas { get; }
 
         public PessoasCollection()
         {
-            this._pessoas = new List<Pessoa>();
+            this.Pessoas = new List<Pessoa>();
         }
 
-        public void Add(Pessoa pessoa) => this._pessoas.Add(pessoa);
+        public void Add(Pessoa pessoa) => this.Pessoas.Add(pessoa);
 
         public IReadOnlyCollection<Pessoa> Obter()
         {
-            var pessoas = new ReadOnlyCollection<Pessoa>(this._pessoas);
+            var pessoas = new ReadOnlyCollection<Pessoa>(this.Pessoas);
             return pessoas;
         }
 
@@ -25,7 +25,7 @@ namespace Sorteio.Domain.Familias.Pessoas
         {
             var dinheiroTotal = Dinheiro.CriarNovo(0);
 
-            foreach (var pessoa in _pessoas)
+            foreach (var pessoa in Pessoas)
             {
                 dinheiroTotal = pessoa.Renda.Somar(dinheiroTotal);
             }
@@ -35,13 +35,13 @@ namespace Sorteio.Domain.Familias.Pessoas
 
         public Pessoa ObterPretendente()
         {
-            return _pessoas.SingleOrDefault(
+            return Pessoas.SingleOrDefault(
                 pessoa => pessoa.EhPretendente());
         }
 
         public int ObterQuantidadeDeDependentes()
         {
-            return _pessoas.Count(pessoa => pessoa.EhDependente() &&
+            return Pessoas.Count(pessoa => pessoa.EhDependente() &&
                                            !pessoa.EhMaiorDeIdade());
         }
     }

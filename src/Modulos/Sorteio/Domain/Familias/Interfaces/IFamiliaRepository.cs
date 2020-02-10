@@ -9,6 +9,6 @@ namespace Sorteio.Domain.Familias.Interfaces
 
         Task<IEnumerable<Familia>> ObterFamiliasParaAvaliacao();
 
-        Task<Status> ObterStatusPorId(int id);
+        Task<Status> ObterStatus(int id);
     }
 }

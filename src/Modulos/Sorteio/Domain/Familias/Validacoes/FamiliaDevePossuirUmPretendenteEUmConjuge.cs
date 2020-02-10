@@ -17,7 +17,7 @@ namespace Sorteio.Domain.Familias.Validacoes
 
         public bool EhValido()
         {
-            var pessoas = _familia.Pessoas.Obter();
+            var pessoas = _familia.Pessoas;
 
             return pessoas.Count(p => p.Tipo == Tipo.Pretendente) == 1 &&
                    pessoas.Count(p => p.Tipo == Tipo.Conjuge) == 1;

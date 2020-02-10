@@ -16,6 +16,11 @@ namespace Core.Domain
             Valor = valor;
         }
 
+        public Guid ToGuid()
+        {
+            return this.Valor;
+        }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;

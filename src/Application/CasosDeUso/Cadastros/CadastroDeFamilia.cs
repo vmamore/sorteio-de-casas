@@ -22,7 +22,7 @@ namespace Application.CasosDeUso.Cadastros
 
         public async Task<Resultado> Cadastrar(FamiliaDto familiaDto)
         {
-            var status = await _familiaRepository.ObterStatusPorId(familiaDto.Status);
+            var status = await _familiaRepository.ObterStatus(familiaDto.StatusId);
 
             var familia = _familiaFactory.Criar(status);
 

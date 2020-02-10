@@ -5,6 +5,6 @@ namespace Sorteio.Domain.Criterios.Interfaces
 {
     public interface IResultadoDaAvaliacaoDosCriteriosRepositorio
     {
-        Task Salvar(IEnumerable<ResultadoDaAvaliacaoDosCriterios> resultados);
+        Task Salvar(ResultadoDaAvaliacaoDosCriterios resultado);
     }
 }

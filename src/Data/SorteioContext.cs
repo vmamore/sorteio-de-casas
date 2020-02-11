@@ -11,6 +11,8 @@ namespace Data
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<ResultadoDaAvaliacaoDosCriterios> Resultados { get; set; }
 
+        public DbSet<Status> Status{ get; set; }
+
         public SorteioContext(DbContextOptions options) : base(options)
         {
         }

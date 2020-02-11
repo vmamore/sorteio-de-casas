@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\InMemoryDataAccess\InMemoryDataAccess.csproj" />
     <ProjectReference Include="..\..\src\Modulos\Sorteio\Sorteio.csproj" />
   </ItemGroup>
 

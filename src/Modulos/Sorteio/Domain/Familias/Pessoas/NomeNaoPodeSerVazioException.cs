@@ -2,7 +2,7 @@
 
 namespace Sorteio.Domain.Familias.Pessoas
 {
-    public sealed class NomeNaoPodeSerVazioException : DomainException
+    public sealed class NomeNaoPodeSerVazioException : ExcecaoDeDominio
     {
         public NomeNaoPodeSerVazioException(string businessMessage) 
             : base(businessMessage)

@@ -3,26 +3,24 @@ using Sorteio.Domain.Criterios;
 using Sorteio.Domain.Criterios.Interfaces;
 using Sorteio.Domain.Familias;
 using Sorteio.Domain.Familias.Interfaces;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
-namespace Application.CasosDeUso.ValidacaoDosCriterios
+namespace Application.CasosDeUso.CalculoDePontos
 {
     public sealed class CalculoDePontosDosCriteriosAtendidos
     {
         private readonly IFamiliaRepository _familiaRepository;
         private readonly IAvaliacaoDeCriterios _avaliacaoDeCriterios;
-        private readonly IResultadoDaAvaliacaoDosCriteriosRepositorio _resultadoDaAvaliacaoDosCriteriosRepositorio;
+        private readonly IResultadoDaAvaliacaoDosCriteriosRepository _resultadoDaAvaliacaoDosCriteriosRepository;
 
         public CalculoDePontosDosCriteriosAtendidos(
             IFamiliaRepository familiaRepository,
             IAvaliacaoDeCriterios avaliacaoDeCriterios,
-            IResultadoDaAvaliacaoDosCriteriosRepositorio resultadoDaAvaliacaoDosCriteriosRepositorio)
+            IResultadoDaAvaliacaoDosCriteriosRepository resultadoDaAvaliacaoDosCriteriosRepository)
         {
             _familiaRepository = familiaRepository;
             _avaliacaoDeCriterios = avaliacaoDeCriterios;
-            _resultadoDaAvaliacaoDosCriteriosRepositorio = resultadoDaAvaliacaoDosCriteriosRepositorio;
+            _resultadoDaAvaliacaoDosCriteriosRepository = resultadoDaAvaliacaoDosCriteriosRepository;
         }
 
         public async Task Executar(Familia familia)
@@ -33,7 +31,7 @@ namespace Application.CasosDeUso.ValidacaoDosCriterios
                 familia.Id,
                 criteriosAtendidos);
 
-            await _resultadoDaAvaliacaoDosCriteriosRepositorio.Salvar(resultadoDaAvaliacaoDosCriterios);
+            await _resultadoDaAvaliacaoDosCriteriosRepository.Salvar(resultadoDaAvaliacaoDosCriterios);
         }
     }
 }

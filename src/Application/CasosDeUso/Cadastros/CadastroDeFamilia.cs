@@ -1,5 +1,5 @@
 ﻿using Application.CasosDeUso.Cadastros.Dtos;
-using Application.CasosDeUso.ValidacaoDosCriterios;
+using Application.CasosDeUso.CalculoDePontos;
 using Core.Domain;
 using Sorteio.Domain.Familias.Interfaces;
 using Sorteio.Domain.Familias.Pessoas;
@@ -37,7 +37,7 @@ namespace Application.CasosDeUso.Cadastros
                     Nome.CriarNovo(pessoa.Nome),
                     Idade.CriarNovo(pessoa.DataDeNascimento),
                     pessoa.Tipo,
-                    Renda.CriarNovo(pessoa.Renda));
+                    pessoa.Renda.HasValue ? Renda.CriarNovo(pessoa.Renda.Value) : null);
             }
 
             var familiaPossuiUmUnicoPretendenteEUmUnicoConjuge = new FamiliaDevePossuirUmPretendenteEUmConjuge(familia);

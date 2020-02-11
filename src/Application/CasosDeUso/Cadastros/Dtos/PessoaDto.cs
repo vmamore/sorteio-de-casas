@@ -12,8 +12,7 @@ namespace Application.CasosDeUso.Cadastros.Dtos
         [Required]
         public DateTime DataDeNascimento { get; set; }
 
-        [Required]
-        public decimal Renda { get; set; }
+        public decimal? Renda { get; set; }
 
         [Required]
         public Tipo Tipo { get; set; }

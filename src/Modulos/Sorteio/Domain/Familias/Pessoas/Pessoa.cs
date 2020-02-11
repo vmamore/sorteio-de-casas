@@ -39,6 +39,11 @@ namespace Sorteio.Domain.Familias.Pessoas
             return this.Idade.Obter();
         }
 
+        public bool PossuiRenda()
+        {
+            return this.Renda != null;
+        }
+
         public bool EhMaiorDeIdade()
         {
             return this.Idade.MaiorQueDezoito();

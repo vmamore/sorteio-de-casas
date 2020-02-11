@@ -11,7 +11,7 @@ namespace Sorteio.Domain.Familias
         public Status Status { get; }
         public IList<Pessoa> Pessoas { get; }
 
-        protected Familia() {}
+        protected Familia() { }
         public Familia(Status status)
         {
             Id = new FamiliaId(Guid.NewGuid());
@@ -19,7 +19,7 @@ namespace Sorteio.Domain.Familias
             Pessoas = new List<Pessoa>();
         }
 
-        public Pessoa CriarPessoa(Nome nome, Idade idade, Tipo tipo, Renda renda)
+        public Pessoa CriarPessoa(Nome nome, Idade idade, Tipo tipo, Renda renda = null)
         {
             var pessoa = new Pessoa(this.Id, nome, idade, tipo, renda);
             this.Pessoas.Add(pessoa);
@@ -32,6 +32,9 @@ namespace Sorteio.Domain.Familias
 
             foreach (var pessoa in Pessoas)
             {
+                if (!pessoa.PossuiRenda())
+                    continue;
+
                 dinheiroTotal = pessoa.Renda.Somar(dinheiroTotal);
             }
 

@@ -2,7 +2,7 @@
 
 namespace Sorteio.Domain.Familias.Pessoas
 {
-    public sealed class DataDeNascimentoNaoPodeSerNoFuturo : DomainException
+    public sealed class DataDeNascimentoNaoPodeSerNoFuturo : ExcecaoDeDominio
     {
         public DataDeNascimentoNaoPodeSerNoFuturo(string businessMessage) : base(businessMessage)
         {

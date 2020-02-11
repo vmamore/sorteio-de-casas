@@ -3,8 +3,10 @@ using System.Threading.Tasks;
 
 namespace Sorteio.Domain.Criterios.Interfaces
 {
-    public interface IResultadoDaAvaliacaoDosCriteriosRepositorio
+    public interface IResultadoDaAvaliacaoDosCriteriosRepository
     {
         Task Salvar(ResultadoDaAvaliacaoDosCriterios resultado);
+
+        Task<IEnumerable<ResultadoDaAvaliacaoDosCriterios>> ObterFamiliasOrdenadasPorPontuacao();
     }
 }

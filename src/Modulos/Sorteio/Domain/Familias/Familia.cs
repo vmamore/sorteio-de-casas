@@ -19,6 +19,12 @@ namespace Sorteio.Domain.Familias
             Pessoas = new List<Pessoa>();
         }
 
+        public bool Validar()
+        {
+            return Pessoas.Count(p => p.Tipo == Tipo.Pretendente) == 1 &&
+                   Pessoas.Count(p => p.Tipo == Tipo.Conjuge) == 1;
+        }
+
         public Pessoa CriarPessoa(Nome nome, Idade idade, Tipo tipo, Renda renda = null)
         {
             var pessoa = new Pessoa(this.Id, nome, idade, tipo, renda);

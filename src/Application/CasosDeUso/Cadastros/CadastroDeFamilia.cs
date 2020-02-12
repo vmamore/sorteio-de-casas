@@ -3,7 +3,6 @@ using Application.CasosDeUso.CalculoDePontos;
 using Core.Domain;
 using Sorteio.Domain.Familias.Interfaces;
 using Sorteio.Domain.Familias.Pessoas;
-using Sorteio.Domain.Familias.Validacoes;
 using System.Threading.Tasks;
 
 namespace Application.CasosDeUso.Cadastros
@@ -39,11 +38,8 @@ namespace Application.CasosDeUso.Cadastros
                     pessoa.Tipo,
                     pessoa.Renda.HasValue ? Renda.CriarNovo(pessoa.Renda.Value) : null);
             }
-
-            var familiaPossuiUmUnicoPretendenteEUmUnicoConjuge = new FamiliaDevePossuirUmPretendenteEUmConjuge(familia);
-
-            if (!familiaPossuiUmUnicoPretendenteEUmUnicoConjuge.EhValido())
-                return Resultado.Erro(familiaPossuiUmUnicoPretendenteEUmUnicoConjuge.Mensagem);
+            if (!familia.Validar())
+                return Resultado.Erro("Familia deve possuir apenas um pretendente e apenas um cônjuge.");
 
             await _familiaRepository.Adicionar(familia);
 
